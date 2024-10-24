@@ -1,0 +1,108 @@
+LecturerClaimsApp
+
+LecturerClaimsApp is a simple ASP.NET Core MVC application that allows lecturers to submit claims and manage their status (approved, pending, or rejected). This example uses an in-memory list for demonstration purposes but can be extended to work with a database using Entity Framework Core.
+
+Table of Contents
+
+Features
+Technologies Used
+Getting Started
+Usage
+Code Overview
+Future Improvements
+Troubleshooting
+License
+Features
+
+Create new claims via a form.
+Approve or reject claims from the list.
+View all submitted claims with their status.
+Uses Model Binding and Validation for form submissions.
+Easily extendable to work with databases.
+Technologies Used
+
+.NET 8.0 – Framework for building web applications.
+ASP.NET Core MVC – MVC architecture for the web app.
+C# – Backend logic.
+Razor Views – For rendering UI.
+Getting Started
+
+Prerequisites
+.NET SDK 8.0
+Visual Studio or Visual Studio Code installed
+Optional: SQL Server (if you want to replace the in-memory list with a database)
+Installation
+Clone the repository:
+bash
+Copy code
+git clone https://github.com/YourUsername/LecturerClaimsApp.git
+cd LecturerClaimsApp
+Restore dependencies:
+bash
+Copy code
+dotnet restore
+Run the application:
+bash
+Copy code
+dotnet run
+Open the browser and navigate to:
+arduino
+Copy code
+http://localhost:5000/LecturerClaims/Index
+Usage
+
+View Claims:
+Navigate to /LecturerClaims/Index to see the list of claims.
+Claims will be displayed with their current status (Approved, Pending, or Rejected).
+Submit a New Claim:
+Go to /LecturerClaims/Create.
+Fill in the form with the necessary details.
+Submit the claim, and it will be added to the list with a default status.
+Approve or Reject Claims:
+Use the Approve or Reject actions on the claim list to update a claim’s status.
+Code Overview
+
+1. LecturerClaimsController.cs
+This controller handles the logic for creating, approving, rejecting, and listing claims.
+
+Index() – Displays the list of all claims.
+Create() – GET method to render the claim form.
+Create(LecturerClaim newClaim) – POST method to handle form submissions and add new claims.
+Approve(int id) – Approves a claim based on its id.
+Reject(int id) – Rejects a claim based on its id.
+2. LecturerClaim Model (Models/LecturerClaim.cs)
+This class defines the structure of a claim, including properties like ClaimId, Description, Amount, and Status.
+
+csharp
+Copy code
+public class LecturerClaim
+{
+    public int ClaimId { get; set; }
+    public string Description { get; set; }
+    public decimal Amount { get; set; }
+    public string Status { get; set; } = "Pending";
+}
+3. Views (Razor Pages)
+Index.cshtml – Displays the list of claims.
+Create.cshtml – Provides a form for submitting new claims.
+Future Improvements
+
+Database Integration: Replace the in-memory list with a SQL Server database using Entity Framework Core.
+Authentication & Authorization: Add user authentication to allow only authorized users to approve/reject claims.
+Validation Feedback: Provide better user feedback on form validation errors.
+Search & Filter: Implement search functionality to filter claims by status.
+Troubleshooting
+
+Common Issues
+WebRoot Not Found Warning:
+Create a wwwroot folder if you're planning to use static files (like CSS/JS).
+Port Conflict:
+If port 5000 is in use, run the application on a different port:
+bash
+Copy code
+dotnet run --urls "http://localhost:5001"
+Model Binding Issues:
+Ensure that the properties in the form match the properties in the LecturerClaim model.
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
