@@ -1,0 +1,32 @@
+﻿@model LecturerClaimsApp.Models.LecturerClaim
+
+<h2>Submit a New Claim</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="LecturerName">Lecturer Name</label>
+        <input type="text" class="form-control" id="LecturerName" name="LecturerName" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="HoursWorked">Hours Worked</label>
+        <input type="number" class="form-control" id="HoursWorked" name="HoursWorked" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="HourlyRate">Hourly Rate</label>
+        <input type="number" step="0.01" class="form-control" id="HourlyRate" name="HourlyRate" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="AdditionalNotes">Additional Notes</label>
+        <textarea class="form-control" id="AdditionalNotes" name="AdditionalNotes"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="DocumentPath">Document Path (Optional)</label>
+        <input type="text" class="form-control" id="DocumentPath" name="DocumentPath" />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
